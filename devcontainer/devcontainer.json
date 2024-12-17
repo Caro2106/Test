@@ -1,0 +1,29 @@
+{
+    "name": "Flutter Developement Environment 1",
+    "image": "cirrusci/flutter:stable", // Docker image to use
+    "features": {
+      "git": "latest",  // Ensure Git is installed
+      "python": "3.9"   // Install a specific version of Python
+    },
+    "customizations": {
+      "vscode": {
+        "extensions": [
+          "dart-code.flutter",
+          "dart-code.dart"
+      ],
+      "settings": {
+        "terminal.integrated.shell.linux": "/bin/bash",
+        "editor.formatOnSave": true
+      }
+      }
+    },
+
+    "postCreateCommand": "flutter doctor", // Run after container creation
+    "remoteUser": "vscode",  // Define the default user for the container
+    "workspaceFolder": "/workspace", //set workspace folder inside container
+    "mounts": [
+      "source=${localWorkspaceFolder}/data,target=/workspace/data,type=bind" // Example of mounting a local directory
+    ]
+
+  }
+  
